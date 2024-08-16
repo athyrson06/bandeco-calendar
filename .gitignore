@@ -1,0 +1,77 @@
+#
+hereisjax/
+# Ignore compiled files
+*.class
+*.o
+*.pyc
+
+# Ignore build output directories
+bin/
+build/
+dist/
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore database files
+*.db
+*.sqlite
+
+# Ignore dependencies
+/node_modules
+/bower_components
+
+# Ignore compiled output
+/dist
+/out
+
+# Ignore coverage reports
+/coverage
+
+# Ignore cache directories
+/.cache
+/.gradle
+/.npm
+/.yarn
+
+# Ignore OS generated files
+ehthumbs.db
+Icon?
+ehthumbs_vista.db
+Thumbs.db
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore virtual environment
+venv/
+.env/
+hereisjax/
+
+# Ignore local development files
+.local/
+
+# Ignore token files
+IDs.txt
+token.json
+credentials.json

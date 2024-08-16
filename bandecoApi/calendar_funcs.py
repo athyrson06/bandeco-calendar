@@ -1,13 +1,12 @@
 from datetime import datetime, timedelta
-import os.path
 
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
+
+from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import cardapio
-from util import deterministic_hash
+
+SERVICE_ACCOUNT_FILE = 'key.json'
 
 # Define the required scope
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
@@ -28,29 +27,31 @@ class CalendarAPI:
         except HttpError as error:
             print(f"An error occurred: {error}")
 
+
+
     def _get_calendar_service_(self):
         """
-        Returns a Google Calendar service object.\n
-        If the token.json file does not exist, the user is prompted to authenticate\n
-        and authorize the application to access their Google Calendar.
+        Returns a Google Calendar service object using a service account.
 
         Returns:
             service: A Google Calendar service object.
         """
 
-        creds = None
-        if os.path.exists("token.json"):
-            creds = Credentials.from_authorized_user_file("token.json", SCOPES)
-        if not creds or not creds.valid:
-            if creds and creds.expired and creds.refresh_token:
-                creds.refresh(Request())
-            else:
-                flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-                creds = flow.run_local_server(port=0)
-            with open("token.json", "w") as token:
-                token.write(creds.to_json())
+        # Path to your service account key file
+        SERVICE_ACCOUNT_FILE = 'key.json'
         
-        return build("calendar", "v3", credentials=creds)
+        # Define the required scopes
+        SCOPES = ['https://www.googleapis.com/auth/calendar']
+
+        # Authenticate using the service account credentials
+        credentials = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+        # Build the service using the authenticated credentials
+        service = build('calendar', 'v3', credentials=credentials)
+        
+        return service
+
 
 
     def _list_events_ids_(self, start_day=None, n_days=7, mode='after'):
@@ -209,8 +210,6 @@ class CalendarAPI:
             string in format : 'yyyy-mm-dd', by default None
         meal : str, optional
             meal name ('Almoço' or 'Jantar'), by default 'Almoço'
-        veg : bool, optional
-            if the meal is vegetarian, by default False
         calendar_id : str, optional
             The calendar ID to create the event on, by default IDCAL
         verbose : bool, optional
@@ -253,10 +252,6 @@ class CalendarAPI:
             'after' or 'before', by default 'after'
         meal : str, optional
             meal name ('Almoço' or 'Jantar'), by default 'Almoço'
-        veg : bool, optional
-            if the meal is vegetarian, by default False
-        calendar_id : str, optional
-            The calendar ID to create the event on, by default IDCAL
         verbose : bool, optional
             If True, prints the event summary and date, by default False
         """
@@ -295,10 +290,17 @@ class CalendarAPI:
 
     def update_week(self, start_day = None, n_days = 7, mode = 'after', verbose = False):
         """
-        Updates the user's primary Google Calendar with events for the current week.
+        Updates the user's primary Google Calendar with the meals for a week by deleting the events and creating new ones.\n
+        Can be used to update the calendar for the current week or the next week (or any number of days).
 
         Parameters
         ----------
+        start_day : string, optional
+            string in format : 'yyyy-mm-dd', by default None
+        n_days : int, optional
+            number of days to populate, by default 7
+        mode : str, optional
+            'after' or 'before', by default 'after'
         verbose : bool, optional
             If True, prints the event summary and date, by default False
         """
@@ -322,3 +324,4 @@ if __name__ == "__main__":
 
     calendar = CalendarAPI(calendar_id=IDCAL)
     calendar.update_week(n_days=10, mode='after', verbose=True)
+

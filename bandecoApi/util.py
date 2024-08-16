@@ -1,14 +1,4 @@
 import re
-import hashlib
-
-def deterministic_hash(value):
-    # Convert the value to a string and encode it to bytes
-    value_bytes = str(value).encode('utf-8')
-    # Use SHA-256 to hash the value
-    hash_object = hashlib.sha256(value_bytes)
-    # Convert the hash object to a hexadecimal string
-    return hash_object.hexdigest()
-
 
 def format_names(text):
     """

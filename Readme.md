@@ -1,5 +1,7 @@
 # Google Calendar Integration Setup
 
+![Icon](./bandecocalendar.png)
+
 ## Prerequisites
 
 Before starting, ensure you have the following:

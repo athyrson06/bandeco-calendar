@@ -73,5 +73,6 @@ hereisjax/
 
 # Ignore token files
 IDs.txt
-token.json
-credentials.json
+
+# Ignore Key files
+key.json

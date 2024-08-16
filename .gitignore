@@ -72,6 +72,7 @@ hereisjax/
 .local/
 
 # Ignore token files
+*.json
+
+# Ignore IDs files
 IDs.txt
-token.json
-credentials.json

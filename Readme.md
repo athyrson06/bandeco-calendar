@@ -81,3 +81,13 @@ Before starting, ensure you have the following:
 
 - **Permission Errors**: If you receive errors related to permissions, make sure that the service account has been correctly added to the calendars with the appropriate permissions.
 - **Authentication Issues**: If there are issues with the service account authentication, verify that the `key.json` file is correctly placed in the root directory and that the path to this file is correctly referenced in the code.
+
+
+## Current Menu
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FRecife&bgcolor=%23ffffff&mode=WEEK&src=ZGRlODJjZGJmYjgwNmY3NzlkNWZiYzJiZWRkZjQ1YmMxNDBiYTQzYTQzZDI2NDQ2OWQ0MjU1OGNlMzkzMjY5N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=YzczOTA2NTJjYmU2ZTA1ZmY5NzhiOTcwODdhYmIzNWE0N2VjMjU4NGEzODkxNmViZDE5ZDg0Mjg4NDA0ZTUyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5&color=%23795548" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+## Add Bandeco Menu to your calendar
+
+- **Padrão**: [Click to add to your agenda](https://calendar.google.com/calendar/u/1?cid=ZGRlODJjZGJmYjgwNmY3NzlkNWZiYzJiZWRkZjQ1YmMxNDBiYTQzYTQzZDI2NDQ2OWQ0MjU1OGNlMzkzMjY5N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
+- **Vegano**: [Click to add to your agenda](https://calendar.google.com/calendar/u/1?cid=YzczOTA2NTJjYmU2ZTA1ZmY5NzhiOTcwODdhYmIzNWE0N2VjMjU4NGEzODkxNmViZDE5ZDg0Mjg4NDA0ZTUyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t)

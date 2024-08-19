@@ -322,7 +322,9 @@ class CalendarAPI:
 
 if __name__ == "__main__":
 
-    calendar = CalendarAPI(calendar_id=IDCAL)
-    calendar.update_week(n_days=10, mode='after', verbose=True)
+    calendarveg = CalendarAPI(calendar_id=IDCALVEG, veg=True)
+    calendarveg.update_week(n_days=10, mode='after', verbose=False)
     
+    calendar = CalendarAPI(calendar_id=IDCAL, veg=False)
+    calendar.update_week(n_days=10, mode='after', verbose=False)
 
